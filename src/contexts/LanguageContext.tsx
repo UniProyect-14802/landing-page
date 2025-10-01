@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 type Language = 'en' | 'es';
 
 interface Translations {
-  // Header
+  // Header Navigation Labels
   features: string;
   solutions: string;
   pricing: string;
@@ -12,6 +12,12 @@ interface Translations {
   reviews: string;
   signIn: string;
   getStarted: string;
+  
+  // Navigation System Labels
+  home: string;
+  about: string;
+  demo: string;
+  help: string;
   
   // Hero Section
   heroTitle: string;
@@ -108,6 +114,10 @@ const translations: Record<Language, Translations> = {
     reviews: 'Reviews',
     signIn: 'Sign In',
     getStarted: 'Get Started',
+    home: 'Home',
+    about: 'About',
+    demo: 'Demo',
+    help: 'Help',
     heroTitle: 'Transform Your Academic Journey',
     heroSubtitle: 'with UniProject',
     heroDescription: 'The ultimate platform for students and educators to collaborate, learn, and achieve academic excellence together.',
@@ -184,6 +194,10 @@ const translations: Record<Language, Translations> = {
     reviews: 'Reseñas',
     signIn: 'Iniciar Sesión',
     getStarted: 'Comenzar',
+    home: 'Inicio',
+    about: 'Acerca de',
+    demo: 'Demo',
+    help: 'Ayuda',
     heroTitle: 'Transforma Tu Viaje Académico',
     heroSubtitle: 'con UniProject',
     heroDescription: 'La plataforma definitiva para estudiantes y educadores para colaborar, aprender y alcanzar la excelencia académica juntos.',

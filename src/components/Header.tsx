@@ -1,13 +1,23 @@
 import { Button } from "@/components/ui/button";
-import { Rocket, Menu, Globe } from "lucide-react";
+import { Rocket, Menu, Globe, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useState } from "react";
 
 const Header = () => {
   const { language, setLanguage, t } = useLanguage();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleLanguage = () => {
     setLanguage(language === 'en' ? 'es' : 'en');
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -21,23 +31,26 @@ const Header = () => {
         </div>
         
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#features" className="text-foreground hover:text-primary transition-smooth">
+          <a href="#features" className="text-foreground hover:text-primary transition-smooth" aria-label={t.features}>
             {t.features}
           </a>
-          <a href="#problem" className="text-foreground hover:text-primary transition-smooth">
+          <a href="#problem" className="text-foreground hover:text-primary transition-smooth" aria-label={t.solutions}>
             {t.solutions}
           </a>
-          <a href="#pricing" className="text-foreground hover:text-primary transition-smooth">
+          <a href="#pricing" className="text-foreground hover:text-primary transition-smooth" aria-label={t.pricing}>
             {t.pricing}
           </a>
-          <a href="#stats" className="text-foreground hover:text-primary transition-smooth">
+          <a href="#stats" className="text-foreground hover:text-primary transition-smooth" aria-label={t.impact}>
             {t.impact}
           </a>
-          <a href="#reviews" className="text-foreground hover:text-primary transition-smooth">
+          <a href="#reviews" className="text-foreground hover:text-primary transition-smooth" aria-label={t.reviews}>
             {t.reviews}
           </a>
-          <a href="#contact" className="text-foreground hover:text-primary transition-smooth">
+          <a href="#contact" className="text-foreground hover:text-primary transition-smooth" aria-label={t.contact}>
             {t.contact}
+          </a>
+          <a href="#search" className="text-foreground hover:text-primary transition-smooth" aria-label="Búsqueda">
+            Búsqueda
           </a>
         </div>
 
@@ -47,6 +60,7 @@ const Header = () => {
             size="sm" 
             onClick={toggleLanguage}
             className="flex items-center space-x-2"
+            aria-label={`Cambiar idioma a ${language === 'en' ? 'Español' : 'English'}`}
           >
             <Globe className="h-4 w-4" />
             <span>{language.toUpperCase()}</span>
@@ -63,10 +77,110 @@ const Header = () => {
           </Link>
         </div>
 
-        <Button variant="ghost" size="icon" className="md:hidden">
-          <Menu className="h-6 w-6" />
-        </Button>
+        {/* Mobile Menu Button */}
+        <div className="md:hidden flex items-center space-x-2">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={toggleLanguage}
+            className="flex items-center space-x-1"
+            aria-label={`Cambiar idioma a ${language === 'en' ? 'Español' : 'English'}`}
+          >
+            <Globe className="h-4 w-4" />
+            <span className="text-xs">{language.toUpperCase()}</span>
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={toggleMobileMenu}
+            aria-label="Abrir menú de navegación"
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
+        </div>
       </nav>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-border">
+          <nav className="container mx-auto px-6 py-4">
+            <div className="flex flex-col space-y-4">
+              <a 
+                href="#features" 
+                className="text-foreground hover:text-primary transition-smooth py-2"
+                onClick={closeMobileMenu}
+                aria-label={t.features}
+              >
+                {t.features}
+              </a>
+              <a 
+                href="#problem" 
+                className="text-foreground hover:text-primary transition-smooth py-2"
+                onClick={closeMobileMenu}
+                aria-label={t.solutions}
+              >
+                {t.solutions}
+              </a>
+              <a 
+                href="#pricing" 
+                className="text-foreground hover:text-primary transition-smooth py-2"
+                onClick={closeMobileMenu}
+                aria-label={t.pricing}
+              >
+                {t.pricing}
+              </a>
+              <a 
+                href="#stats" 
+                className="text-foreground hover:text-primary transition-smooth py-2"
+                onClick={closeMobileMenu}
+                aria-label={t.impact}
+              >
+                {t.impact}
+              </a>
+              <a 
+                href="#reviews" 
+                className="text-foreground hover:text-primary transition-smooth py-2"
+                onClick={closeMobileMenu}
+                aria-label={t.reviews}
+              >
+                {t.reviews}
+              </a>
+              <a 
+                 href="#contact" 
+                 className="text-foreground hover:text-primary transition-smooth py-2"
+                 onClick={closeMobileMenu}
+                 aria-label={t.contact}
+               >
+                 {t.contact}
+               </a>
+               <a 
+                 href="#search" 
+                 className="text-foreground hover:text-primary transition-smooth py-2"
+                 onClick={closeMobileMenu}
+                 aria-label="Búsqueda"
+               >
+                 Búsqueda
+               </a>
+              
+              <div className="border-t border-border pt-4 mt-4">
+                <div className="flex flex-col space-y-3">
+                  <Link to="/login" onClick={closeMobileMenu}>
+                    <Button variant="ghost" className="w-full justify-start">
+                      {t.signIn}
+                    </Button>
+                  </Link>
+                  <Link to="/register" onClick={closeMobileMenu}>
+                    <Button variant="hero" className="w-full">
+                      {t.getStarted}
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
