@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Rocket, Menu, Globe, X } from "lucide-react";
-import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useState } from "react";
 
@@ -65,16 +64,16 @@ const Header = () => {
             <Globe className="h-4 w-4" />
             <span>{language.toUpperCase()}</span>
           </Button>
-          <Link to="/login">
+          <a href="https://apps.powerapps.com/play/e/default-0e0cb060-09ad-49f5-a005-68b9b49aa1f6/a/feb03cb2-52f0-4625-8adc-353d045e401f?tenantId=0e0cb060-09ad-49f5-a005-68b9b49aa1f6&hint=9c7d8faa-dc8d-4eec-912e-c3fd8b102272&sourcetime=1762355228619#">
             <Button variant="ghost">
               {t.signIn}
             </Button>
-          </Link>
-          <Link to="/register">
+          </a>
+          <a href="https://apps.powerapps.com/play/e/default-0e0cb060-09ad-49f5-a005-68b9b49aa1f6/a/feb03cb2-52f0-4625-8adc-353d045e401f?tenantId=0e0cb060-09ad-49f5-a005-68b9b49aa1f6&hint=9c7d8faa-dc8d-4eec-912e-c3fd8b102272&sourcetime=1762355228619#">
             <Button variant="hero" size="lg">
               {t.getStarted}
             </Button>
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -165,16 +164,16 @@ const Header = () => {
               
               <div className="border-t border-border pt-4 mt-4">
                 <div className="flex flex-col space-y-3">
-                  <Link to="/login" onClick={closeMobileMenu}>
+                  <a href="https://apps.powerapps.com/play/e/default-0e0cb060-09ad-49f5-a005-68b9b49aa1f6/a/feb03cb2-52f0-4625-8adc-353d045e401f?tenantId=0e0cb060-09ad-49f5-a005-68b9b49aa1f6&hint=9c7d8faa-dc8d-4eec-912e-c3fd8b102272&sourcetime=1762355228619#" onClick={closeMobileMenu}>
                     <Button variant="ghost" className="w-full justify-start">
                       {t.signIn}
                     </Button>
-                  </Link>
-                  <Link to="/register" onClick={closeMobileMenu}>
+                  </a>
+                  <a href="https://apps.powerapps.com/play/e/default-0e0cb060-09ad-49f5-a005-68b9b49aa1f6/a/feb03cb2-52f0-4625-8adc-353d045e401f?tenantId=0e0cb060-09ad-49f5-a005-68b9b49aa1f6&hint=9c7d8faa-dc8d-4eec-912e-c3fd8b102272&sourcetime=1762355228619#" onClick={closeMobileMenu}>
                     <Button variant="hero" className="w-full">
                       {t.getStarted}
                     </Button>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
