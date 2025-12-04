@@ -119,6 +119,26 @@ const Index = () => {
         </div>
       </section>
 
+      <section id="about-team" className="py-8">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-foreground mb-4">Video: About the Team</h3>
+            <div className="bg-card border border-border/50 rounded-2xl overflow-hidden shadow-elegant">
+              <div className="aspect-video">
+                <iframe
+                  src="https://www.youtube.com/embed/EzRpSeG6dxs?modestbranding=1&rel=0"
+                  title="About the Team"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="w-full h-full"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       <Footer />
     </div>
